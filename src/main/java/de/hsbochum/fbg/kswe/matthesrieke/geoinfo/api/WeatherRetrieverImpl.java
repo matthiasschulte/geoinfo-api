@@ -3,6 +3,7 @@ package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
 
 import java.io.IOException;
 import net.aksingh.owmjapis.CurrentWeather;
+import net.aksingh.owmjapis.DailyForecast;
 import net.aksingh.owmjapis.OpenWeatherMap;
 
 /**
@@ -22,6 +23,13 @@ public class WeatherRetrieverImpl {
         Weather weather = new Weather(city);
         CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry().getName());
         weather.setTemp(cwd.getMainInstance().getTemperature());
+        return weather;
+    }
+    
+    public Weather retrieveForecast(City city) throws UnsupportedCountryException, IOException {
+        Weather weather = new Weather(city);
+        DailyForecast fc = owm.dailyForecastByCityName(city.getCity(), city.getCountry().getName(), (byte) 0);
+        weather.setTemp(fc.getForecastInstance(0).getTemperatureInstance().getMaximumTemperature());
         return weather;
     }
     
