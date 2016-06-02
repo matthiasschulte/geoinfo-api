@@ -18,9 +18,9 @@ public class WeatherRetrieverImpl {
         owm = new OpenWeatherMap(API_KEY);
     }
     
-    public Weather retrieve(City city) throws UnsupportedCountryException, IOException {
+    public Weather retrieveWeather(City city) throws UnsupportedCountryException, IOException {
         Weather weather = new Weather(city);
-        CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry());
+        CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry().getName());
         weather.setTemp(cwd.getMainInstance().getTemperature());
         return weather;
     }

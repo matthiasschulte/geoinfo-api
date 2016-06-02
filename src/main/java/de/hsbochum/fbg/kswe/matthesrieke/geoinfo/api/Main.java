@@ -18,7 +18,7 @@ public class Main {
 
         LOG.info(retriever);        
         try {
-            Weather weather = retriever.retrieve(new City("Bochum", "Germany"));
+            Weather weather = retriever.retrieveWeather(new City("Bochum", "Germany"));
             LOG.info(weather);
         }
         catch (UnsupportedCountryException | IOException e) {
@@ -26,7 +26,7 @@ public class Main {
         }
         
         try {
-            Weather weather = retriever.retrieve(new City("Sydney", "Australia"));
+            Weather weather = retriever.retrieveWeather(new City("Sydney", "Australia"));
             LOG.info(weather);
         }
         catch (UnsupportedCountryException | IOException e) {

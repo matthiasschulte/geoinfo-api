@@ -8,18 +8,18 @@ package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
 public class City {
     
     private final String city;
-    private final String country;
+    private final Country country;
 
-    public City(String city, String country) {
+    public City(String city, Country country) {
         this.city = city;
         this.country = country;
     }
-
+    
     public String getCity() {
         return city;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
