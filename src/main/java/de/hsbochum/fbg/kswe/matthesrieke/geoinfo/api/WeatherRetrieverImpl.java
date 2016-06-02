@@ -5,6 +5,7 @@ import java.io.IOException;
 import net.aksingh.owmjapis.CurrentWeather;
 import net.aksingh.owmjapis.DailyForecast;
 import net.aksingh.owmjapis.OpenWeatherMap;
+import org.json.JSONException;
 
 /**
  *
@@ -19,11 +20,17 @@ public class WeatherRetrieverImpl {
         owm = new OpenWeatherMap(API_KEY);
     }
     
-    public Weather retrieveWeather(City city) throws UnsupportedCountryException, IOException {
-        Weather weather = new Weather(city);
-        CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry().getName());
-        weather.setTemp(cwd.getMainInstance().getTemperature());
-        return weather;
+    public Weather retrieveWeather(City city) throws UnsupportedCountryException, RetrievalException {
+        try {
+            Weather weather = new Weather(city);
+            CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry().getName());
+            weather.setTemp(cwd.getMainInstance().getTemperature());
+            return weather;
+        } catch (IOException ex) {
+            throw new RetrievalException(ex.getMessage(), ex);
+        } catch (JSONException ex) {
+            throw new RetrievalException("Could not read weather data");
+        }
     }
     
     public Weather retrieveForecast(City city) throws UnsupportedCountryException, IOException {
