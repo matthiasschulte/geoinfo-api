@@ -11,7 +11,7 @@ import org.json.JSONException;
  *
  * @author <a href="mailto:m.rieke@52north.org">Matthes Rieke</a>
  */
-public class WeatherRetrieverImpl {
+public class WeatherRetrieverImpl implements WeatherRetriever {
     
     private static final String API_KEY = "d5396baed14be1f2cf0bba5739f33b21";
     private final OpenWeatherMap owm;

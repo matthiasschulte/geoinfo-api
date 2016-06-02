@@ -6,6 +6,8 @@ package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
  */
 public interface WeatherRetriever {
     
-    Weather retrieve(City city);
+    Weather retrieveWeather(City city);
+    
+    Weather retrieveForecast(City city);
     
 }
