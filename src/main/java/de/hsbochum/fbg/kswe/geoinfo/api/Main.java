@@ -1,5 +1,5 @@
 
-package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
+package de.hsbochum.fbg.kswe.geoinfo.api;
 
 import java.io.IOException;
 import org.apache.logging.log4j.LogManager;

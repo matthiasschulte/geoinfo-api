@@ -1,4 +1,4 @@
-package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
+package de.hsbochum.fbg.kswe.geoinfo.api;
 
 /**
  *

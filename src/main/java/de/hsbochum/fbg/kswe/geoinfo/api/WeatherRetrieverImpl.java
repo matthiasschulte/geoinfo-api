@@ -1,5 +1,5 @@
 
-package de.hsbochum.fbg.kswe.matthesrieke.geoinfo.api;
+package de.hsbochum.fbg.kswe.geoinfo.api;
 
 import java.io.IOException;
 import net.aksingh.owmjapis.CurrentWeather;
@@ -19,6 +19,10 @@ public class WeatherRetrieverImpl {
     }
     
     public Weather retrieve(City city) throws UnsupportedCountryException, IOException {
+        if (!"germany".equalsIgnoreCase(city.getCountry())) {
+            throw new UnsupportedCountryException("Country not supported!");
+        }
+        
         Weather weather = new Weather(city);
         CurrentWeather cwd = owm.currentWeatherByCityName(city.getCity(), city.getCountry());
         weather.setTemp(cwd.getMainInstance().getTemperature());
